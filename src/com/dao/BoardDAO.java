@@ -25,4 +25,16 @@ public class BoardDAO {
 		BoardDTO dto = session.selectOne("BoardMapper.retrieve", num);
 		return dto;
 	}
+	
+	// 조회수 증가
+	public int readcnt(SqlSession session, int num) {
+		int n = session.update("BoardMapper.readcnt",num);
+		return n;
+	}
+	
+	// 글 수정
+	public int update(SqlSession session, BoardDTO dto) {
+		int n = session.update("BoardMapper.update", dto);
+		return n;
+	}
 }
