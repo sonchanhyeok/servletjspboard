@@ -8,22 +8,24 @@ import org.apache.ibatis.session.SqlSession;
 import com.config.MySqlSessionFactory;
 import com.dao.BoardDAO;
 import com.dto.BoardDTO;
+import com.dto.PageDTO;
 
 public class BoardServiceImpl implements BoardService {
 
 	@Override
-	public List<BoardDTO> list(HashMap<String,String> map) {
+	public PageDTO list(HashMap<String,String> map, int curPage) {
 		
 		SqlSession session = MySqlSessionFactory.getSession();
-		List<BoardDTO> list = null;
+		PageDTO pageDTO = null;
+		
 		try {
 			BoardDAO dao = new BoardDAO();
-			list = dao.list(session, map);
+			pageDTO = dao.list(session, map, curPage);
 			
 		}finally {
 			session.close();
 		}
-		return list;
+		return pageDTO;
 	}
 
 	@Override

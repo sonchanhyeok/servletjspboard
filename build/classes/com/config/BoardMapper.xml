@@ -45,4 +45,26 @@
   		where num=#{num}
   	</delete>
   	
+  	<!-- 전체 레코드 갯수, 검색 안할 때 -->
+  	<select id="totalCount" resultType="int">
+  		select count(*)
+  		from board
+  	</select>
+  	
+  	<!-- 전체 레코드 갯수, 검색 할 때 -->
+  	<select id="totalCountSearch" resultType="int" parameterType="hashmap">
+  		select count(*)
+  		from board
+  		<if test="searchName=='title' and searchValue != null">
+			where title like '%'||#{searchValue}||'%'
+		</if>
+		<if test="searchName=='author' and searchValue != null">
+			where author like '%'||#{searchValue}||'%'
+		</if>	
+  	</select>
+  	
 </mapper>
+
+
+
+
