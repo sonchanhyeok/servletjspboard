@@ -65,13 +65,29 @@ public class BoardServiceImpl implements BoardService {
 		try {
 			//DAO 연동코드
 			BoardDAO dao = new BoardDAO();
-			dao.update(session, dto);
+			n=dao.update(session, dto);
 			session.commit();
 			
 		}finally {
 			session.close();
 		} 
 		return n;
+	}
+
+	@Override
+	public int delete(int num) {
+		int n = 0;
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			//DAO 연동코드
+			BoardDAO dao = new BoardDAO();
+			n=dao.delete(session, num);
+			session.commit();
+			
+		}finally {
+			session.close();
+		} 
+		return 0;
 	}
 
 }
