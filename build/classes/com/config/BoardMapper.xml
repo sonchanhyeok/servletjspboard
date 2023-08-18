@@ -14,5 +14,12 @@
 		insert into board (num, title, author, content)
 		values (board_seq.nextval,  #{title}, #{author}, #{content})
 	</insert>
+	
+	<select id="retrieve" parameterType="int" 
+              resultType="BoardDTO">
+       select num, title, author, content, writeday, readcnt
+ 	   from board
+       where num = #{num}
+    </select>
   
 </mapper>

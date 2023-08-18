@@ -17,7 +17,7 @@
 <table border="1">
 	<tr>
 		<th>글번호</th>
-		<th>제복</th>
+		<th>제목</th>
 		<th>작성자</th>
 		<th>작성일</th>
 		<th>조회수</th>
@@ -27,8 +27,8 @@
 %>
 	<tr>
 		<td><%=dto.getNum() %></td>
-		<td><%=dto.getTitle() %></td>
-		<td><%=dto.getAuthor() %></td>
+		<td><a href="retrieve?num=<%=dto.getNum()%>"><%= dto.getTitle() %></a></td>
+		<td><%= dto.getAuthor() %></td>
 		<td><%=dto.getWriteday() %></td>
 		<td><%=dto.getReadcnt() %></td>
 	</tr>

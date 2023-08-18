@@ -14,9 +14,15 @@ public class BoardDAO {
 		return list;
 	}
 	
-	//삽입
+	//글저장
 	public int write(SqlSession session, BoardDTO dto){
 		int n = session.insert("BoardMapper.write", dto);
 		return n;
+	}
+	
+	// 글자세히 보기
+	public BoardDTO retrieve(SqlSession session, int num) {
+		BoardDTO dto = session.selectOne("BoardMapper.retrieve", num);
+		return dto;
 	}
 }
