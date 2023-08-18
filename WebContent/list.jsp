@@ -32,6 +32,20 @@
 		List<BoardDTO> list = (List<BoardDTO>) request.getAttribute("boardList");
 	%>
 	<table border="1">
+	<!-- 검색화면  -->
+	<tr>
+		<td colspan="6">
+			<form action="list">
+				<select name="searchName">
+					<option value="title">제목</option>
+					<option value="author">작성자</option>
+					<input type="text" name="searchValue">
+					<input type="submit" value="검색">
+				</select>
+			</form>
+		</td>
+	</tr>
+	<!-- 검색화면  -->
 		<tr>
 			<th>글번호</th>
 			<th>제목</th>

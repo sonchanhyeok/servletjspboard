@@ -4,9 +4,15 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="BoardMapper">
-	<select id="list" resultType="BoardDTO">
+	<select id="list" resultType="BoardDTO" parameterType="hashmap">
 		select num, title, author, content, writeday, readcnt
 		from board
+		<if test="searchName=='title' and searchValue != null">
+			where title like '%'||#{searchValue}||'%'
+		</if>
+		<if test="searchName=='author' and searchValue != null">
+			where author like '%'||#{searchValue}||'%'
+		</if>	
 		order by num desc
 	</select>
 	

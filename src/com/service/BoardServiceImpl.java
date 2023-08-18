@@ -1,5 +1,6 @@
 package com.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -11,13 +12,13 @@ import com.dto.BoardDTO;
 public class BoardServiceImpl implements BoardService {
 
 	@Override
-	public List<BoardDTO> list() {
+	public List<BoardDTO> list(HashMap<String,String> map) {
 		
 		SqlSession session = MySqlSessionFactory.getSession();
 		List<BoardDTO> list = null;
 		try {
 			BoardDAO dao = new BoardDAO();
-			list = dao.list(session);
+			list = dao.list(session, map);
 			
 		}finally {
 			session.close();
